@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            margin:50px;
+        }
+        label{
+            display:block;
+            margin-bottom:20px;
+        }
+        ul{
+            list-style:none;
+        }
+        li{
+            display:flex;
+            margin-bottom:20px;
+        }
+        h4{
+            margin:0 20px;
+        }
+        .box div{
+            margin:0 20px;
+        }
+        .box div button{
+            width: 20px;
+            height:20px;
+        }
+        .box div input{
+            width: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" ng-app="myApp" ng-controller="cro">
+        <label><input type="checkbox" ng-model="allcheck" ng-click="checkall()">全选</label>
+        <ul>
+            <li ng-repeat="x in list">
+                <input type="checkbox" ng-click="check(x.ischeck)" ng-model="x.ischeck" />
+                <h4>{{x.name}}</h4>
+                <span class="price">{{x.price}}</span>
+                <div><button ng-click="reduce($index)">-</button><input type="number" ng-model="x.num" /><button ng-click="add($index)">+</button></div>
+                <span class="muteprice">{{x.price * x.num}}</span>
+            </li>
+        </ul>
+        <footer>
+            <span>{{totnum()}}</span>
+            <span>{{totprice()}}</span>
+        </footer>
+    </div>
+    <script src="../angular.min.js"></script>
+    <script>
+        const list = [
+            {
+                name:"孤岛惊魂5",
+                num:1,
+                price:208,
+                ischeck:true
+            },
+            {
+                name:"刺客信条-起源",
+                num:1,
+                price:258,
+                ischeck:true
+            },
+            {
+                name:"女神异闻录5",
+                num:1,
+                price:320,
+                ischeck:true
+            }
+        ]
+        var app = angular.module('myApp',[])
+        app.controller("cro",($scope)=>{
+            $scope.list = list
+            $scope.allcheck = true
+            $scope.checkall = function(){
+                if($scope.allcheck){
+                    for(var i=0;i<$scope.list.length;i++){
+                        $scope.list[i].ischeck=true
+                    }
+                }else{
+                    for(var i=0;i<$scope.list.length;i++){
+                        $scope.list[i].ischeck=false
+                    }
+                }
+            }
+            $scope.check = function(check){
+                if(check){
+                    var arr=[]
+                    for(var i=0;i<$scope.list.length;i++){
+                        arr.push($scope.list[i].ischeck)
+                    }
+                    if(arr.indexOf(false)==-1){
+                        $scope.allcheck = true
+                    }else{
+                        $scope.allcheck = false
+                    }
+                }else{
+                    $scope.allcheck = false
+                }
+            }
+            $scope.reduce = function(index){
+                if($scope.list[index].num<2){
+                    $scope.list[index].num=1
+                }else{
+                    $scope.list[index].num--
+                }
+            }
+            $scope.add = function(index){
+                $scope.list[index].num++
+            }
+            $scope.totnum = function(){
+                var totnum = 0;
+                for(var i=0;i<$scope.list.length;i++){
+                    if($scope.list[i].ischeck){
+                        totnum+=$scope.list[i].num;
+                    }
+                }
+                return totnum
+            }
+            $scope.totprice = function(){
+                var totprice = 0;
+                for(var i=0;i<$scope.list.length;i++){
+                    if($scope.list[i].ischeck){
+                        totprice+=$scope.list[i].num * $scope.list[i].price;
+                    }
+                }
+                return totprice
+            }
+        })
+    </script>
+</body>
+</html>

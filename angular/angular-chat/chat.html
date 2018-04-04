@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        .box{
+            width: 800px;
+            background:#ddd;
+            margin:50px auto;
+        }
+        h3{
+            padding:10px;
+            border-bottom:1px solid #f00;
+        }
+        .content{
+            height:300px;
+            padding:0 20px;
+            border-bottom:1px solid #f00;
+            overflow-y:auto;
+        }
+        dl{
+            float:left;
+            width: 100%;
+            margin:10px 0;
+        }
+        dt{
+            line-height:26px;
+            font-size:14px;
+            color:#333;
+        }
+        dd{
+            display:table;
+            line-height:24px;
+            color:#333;
+            background:#fff;
+            border-radius:4px;
+            padding:5px 10px;
+        }
+        dl.on{
+            float:right;
+        }
+        dl.on dt{
+            text-align:right;
+        }
+        dl.on dd{
+            float:right;
+            background:green;
+            color:#fff;
+        }
+        form{
+            height:100px;
+            padding:20px;
+        }
+        textarea{
+            width: 100%;
+            height:80px;
+            border:0;
+            background:initial;
+            resize:none;
+            line-height:1.5;
+            outline:none;
+            font-size:20px;
+        }
+        .btn{
+            width: 100px;
+            height:35px;
+            background:#818F99;
+            color:#000;
+            border:0;
+            line-height:35px;
+            text-align:center;
+            float:right;
+            cursor:pointer;
+            outline:none;
+        }
+        .btn:hover{
+            background:#A1ACB4;
+        }
+        .btn:visited{
+            background:#8C98A2;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" ng-app="myApp" ng-controller="cro">
+        <h3>Mr.quin</h3>
+        <div class="content" id="content">
+            <dl ng-repeat="x in message" class="{{x.cls}}">
+                <dt>{{x.name}}</dt>
+                <dd>{{x.text}}</dd>
+            </dl>
+        </div>
+        <form>
+            <textarea ng-model="msg" ng-keyup="sends($event)"></textarea>
+            <input class="btn" type="button" value="发送" ng-click="send()" />
+        </form>
+    </div>
+    <script src="../angular.min.js"></script>
+    <script>
+        var app = angular.module("myApp",[])
+        app.controller("cro",($scope,$http)=>{
+            $scope.message = []
+            $scope.send = function(){
+                let my = {
+                    name:"777",
+                    text:$scope.msg,
+                    cls:"on"
+                }
+                $scope.message.push(my)
+                $scope.msg = ""
+                $http({
+                    method:"GET",
+                    url:"chat.php",
+                }).then((msg)=>{
+                    var respo = {
+                        name:"Mr.quin",
+                        text:msg.data,
+                        cls:"",
+                    }
+                    $scope.message.push(respo)
+                    document.getElementById("content").scrollTop = document.getElementById("content").scrollHeight
+                })
+                document.getElementById("content").scrollTop = document.getElementById("content").scrollHeight
+            }
+            $scope.sends = function(e){
+                if(e.keyCode == 100 || e.keyCode==13){
+                    $scope.send()
+                }
+            }
+        })
+    </script>
+</body>
+</html>
