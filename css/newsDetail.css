@@ -1,0 +1,287 @@
+@-webkit-keyframes loading {
+  50% {
+    transform: scale(0.4);
+    opacity: .4;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.loading {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.loading i {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #333;
+  position: absolute;
+}
+.loading i:nth-child(1) {
+  top: 11px;
+  left: 0;
+  -webkit-animation: loading 1s ease 0s infinite;
+}
+.loading i:nth-child(2) {
+  top: 8px;
+  left: 8px;
+  -webkit-animation: loading 1s ease -0.12s infinite;
+}
+.loading i:nth-child(3) {
+  top: 0px;
+  left: 11px;
+  -webkit-animation: loading 1s ease -0.24s infinite;
+}
+.loading i:nth-child(4) {
+  top: -8px;
+  left: 8px;
+  -webkit-animation: loading 1s ease -0.36s infinite;
+}
+.loading i:nth-child(5) {
+  top: -11px;
+  left: 0;
+  -webkit-animation: loading 1s ease -0.48s infinite;
+}
+.loading i:nth-child(6) {
+  top: -8px;
+  left: -8px;
+  -webkit-animation: loading 1s ease -0.6s infinite;
+}
+.loading i:nth-child(7) {
+  top: 0px;
+  left: -11px;
+  -webkit-animation: loading 1s ease -0.72s infinite;
+}
+.loading i:nth-child(8) {
+  top: 8px;
+  left: -8px;
+  -webkit-animation: loading 1s ease -0.84s infinite;
+}
+.newsDetail .top {
+  margin: 60px 0 40px;
+}
+.newsDetail .top h4 {
+  font-size: 30px;
+  color: #111111;
+  line-height: 1;
+  font-weight: 400;
+  text-indent: 2em;
+}
+.newsDetail .top .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 36px 20px 13px;
+  border-bottom: 1px solid #e2e2e2;
+}
+.newsDetail .top .wrap p {
+  font-size: 14px;
+  color: #999999;
+  line-height: 1;
+  font-weight: 400;
+}
+.newsDetail .top .wrap p span {
+  color: #333;
+}
+.newsDetail .middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.newsDetail .middle .left {
+  flex: 0 0 800px;
+}
+.newsDetail .middle .left .newsContent {
+  line-height: 30px;
+}
+.newsDetail .middle .left .recom {
+  margin-top: 50px;
+  background: #f9f9f9;
+  padding: 20px 20px 26px;
+}
+.newsDetail .middle .left .recom h4 {
+  font-size: 16px;
+  color: #111111;
+  line-height: 1;
+  font-weight: 400;
+}
+.newsDetail .middle .left .recom ul {
+  margin-top: 18px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+.newsDetail .middle .left .recom ul li {
+  cursor: pointer;
+}
+.newsDetail .middle .left .recom ul li img {
+  width: 136px;
+  height: 136px;
+}
+.newsDetail .middle .left .recom ul li p {
+  width: 136px;
+  font-size: 14px;
+  color: #666666;
+  line-height: 1;
+  font-weight: 400;
+  margin: 15px 0 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.newsDetail .middle .left .recom ul li span {
+  font-size: 12px;
+  color: #ad0015;
+  line-height: 1;
+  font-weight: 400;
+}
+.newsDetail .middle .left .recom ul li + li {
+  margin-left: 20px;
+}
+.newsDetail .middle .right {
+  flex: 0 0 300px;
+}
+.newsDetail .middle .right .hot {
+  background: #f9f9f9;
+  padding: 28px 0 36px;
+}
+.newsDetail .middle .right .hot .item {
+  padding: 0 15px;
+}
+.newsDetail .middle .right .hot .item h4 {
+  text-align: center;
+  font-size: 16px;
+  color: #111111;
+  line-height: 1;
+  font-weight: 400;
+  margin-bottom: 20px;
+  position: relative;
+}
+.newsDetail .middle .right .hot .item h4::before,
+.newsDetail .middle .right .hot .item h4::after {
+  content: "";
+  position: absolute;
+  width: 77px;
+  height: 1px;
+  background-color: #e8e7e8;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.newsDetail .middle .right .hot .item h4::before {
+  left: 20px;
+}
+.newsDetail .middle .right .hot .item h4::after {
+  right: 20px;
+}
+.newsDetail .middle .right .hot .item img {
+  width: 100%;
+  height: 100px;
+}
+.newsDetail .middle .right .hot .item ul {
+  margin-top: 20px;
+}
+.newsDetail .middle .right .hot .item ul li {
+  width: 270px;
+  padding-left: 20px;
+  padding-right: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666666;
+  line-height: 30px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+}
+.newsDetail .middle .right .hot .item ul li::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #cccccc;
+  left: 10px;
+  top: 50%;
+}
+.newsDetail .middle .right .hot .item + .item {
+  margin-top: 32px;
+}
+.newsDetail .middle .right .formBox {
+  margin-top: 30px;
+  padding: 33px 0 38px;
+  background: url('../img/form_bg.png') no-repeat center center / 100% 100%;
+}
+.newsDetail .middle .right .formBox .formTit {
+  text-align: center;
+}
+.newsDetail .middle .right .formBox .formTit h4 {
+  font-size: 20px;
+  color: #ffffff;
+  line-height: 1;
+  font-weight: bold;
+}
+.newsDetail .middle .right .formBox .formTit p {
+  font-size: 16px;
+  color: #f9f9f9;
+  line-height: 1;
+  font-weight: 400;
+  opacity: .66;
+  margin-top: 10px;
+}
+.newsDetail .middle .right .formBox .form {
+  padding: 27px 35px 0;
+}
+.newsDetail .middle .right .formBox .form .tips {
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: #fefefe;
+  line-height: 1;
+  font-weight: 400;
+}
+.newsDetail .middle .right .formBox .form .formItem {
+  border-radius: 19px;
+  background: rgba(231, 231, 231, 0.26);
+  padding: 9px 20px;
+}
+.newsDetail .middle .right .formBox .form .formItem input,
+.newsDetail .middle .right .formBox .form .formItem textarea {
+  width: 100%;
+  background: transparent;
+  resize: none;
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 1;
+  font-weight: 400;
+}
+.newsDetail .middle .right .formBox .form .formItem input::-webkit-input-placeholder,
+.newsDetail .middle .right .formBox .form .formItem textarea::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.newsDetail .middle .right .formBox .form .formItem:nth-of-type(3) {
+  border-radius: 10px;
+}
+.newsDetail .middle .right .formBox .form .formItem + .formItem {
+  margin-top: 16px;
+}
+.newsDetail .middle .right .formBox .form .submit {
+  margin-top: 30px;
+  height: 38px;
+  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 19px;
+  text-align: center;
+  font-size: 14px;
+  color: #182128;
+  line-height: 38px;
+  font-weight: 400;
+}

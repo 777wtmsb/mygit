@@ -1,0 +1,106 @@
+.list {
+  padding: 50px 0 60px;
+}
+.list .goodsTab {
+  margin-bottom: 40px;
+}
+.list .goodsTab ul {
+  display: flex;
+  width: 750px;
+  margin: auto;
+}
+.list .goodsTab ul li {
+  flex: 0 0 150px;
+  height: 50px;
+  font-size: 16px;
+  color: #666666;
+  line-height: 50px;
+  font-weight: 400;
+  border: 1px solid #c5c5c5;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+.list .goodsTab ul li a{
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.list .goodsTab ul li:hover {
+  background: #111;
+  border: none;
+  color: #fff;
+}
+.list .goodsTab ul li.active {
+  background: #111;
+  border: none;
+  color: #fff;
+}
+.list .goodsTab ul li + li {
+  border-left: 0;
+}
+.list .goods ul {
+  display: table;
+  width: 1300px;
+}
+.list .goods ul li {
+  width: 285px;
+  float: left;
+  border: 1px solid #ccc;
+  margin-right: 20px;
+  margin-bottom: 40px;
+  padding-top: 10px;
+}
+.list .goods ul li img {
+  display: block;
+  width: 256px;
+  height: 200px;
+  margin: 0 auto 10px;
+}
+.list .goods ul li .info {
+  padding-left: 20px;
+  background: #f1f1f1;
+}
+.list .goods ul li .info p {
+  font-size: 16px;
+  color: #333333;
+  line-height: 50px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.list .goods ul li .wh {
+  padding-left: 20px;
+  font-size: 14px;
+  color: #999999;
+  line-height: 45px;
+  font-weight: 400;
+  height: 45px;
+}
+.list .goods ul li .wh .left {
+  float: left;
+}
+.list .goods ul li .wh .left span {
+  color: #1b4dae;
+}
+.list .goods ul li .wh .right {
+  float: right;
+}
+.list .more {
+  width: 150px;
+  height: 40px;
+  margin: 20px auto;
+  background: #999;
+  text-align: center;
+  font-size: 20px;
+  color: #ffffff;
+  line-height: 40px;
+  font-weight: 400;
+  cursor: pointer;
+  user-select: none;
+}
+.list .more:hover {
+  background: #e40000;
+}
