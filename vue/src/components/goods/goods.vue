@@ -1,6 +1,6 @@
 <template>
-<div>
-    <div class="goods">
+<section>
+    <div class="goods" ref="goods">
         <div class="tab-menu" ref="menuScroll">
             <ul>
                 <li v-for="(item,index) in goods" :class="{'on':onIndex == index}" ref="menu" @click="scrollto(index)"><p><span v-if="item.type>=0" :class="classArray[item.type]"></span>{{item.name}}</p></li>
@@ -28,9 +28,11 @@
             </ul>
         </div>
     </div>
-    <detail class="foods-detail" ref="detail" :foods="tofoods"></detail>
-    <shopcart :cartArr="tocartnum" :seller="seller"></shopcart>
-</div>
+    <div class="detail">
+      <detail v-if="goods.length" class="foods-detail" ref="detail" :foods="goods[Index].foods[Index1]"></detail>
+    </div>
+    <shopcart @cleanAll="shopClean" :cartArr="tocartnum" :seller="seller"></shopcart>
+</section>
 </template>
 
 <script>
@@ -54,17 +56,16 @@
         },
         created:function(){
             var that = this;
-            this.$http.get('/api/goods').then(function(response){
+            this.$http.get('/api/goods').then((response)=>{
                 if(response.data.err==0){
-                    that.goods = response.data.data;
-                    that.$nextTick(function() {
-                        that.initscroll()
-                        that.getHeight()
+                    this.goods = response.data.data;
+                    this.$nextTick(function() {
+                        this.initscroll()
+                        this.getHeight()
                     });
                 }
             })
             this.classArray = ["decrease1","discount1","special1","invoice1","guarantee1"]
-
         },
         computed:{
             onIndex(){
@@ -86,15 +87,20 @@
                 }
                 return cartArr
             },
-            tofoods(){
-                return this.goods[this.Index].foods[this.Index1]
-            }
         },
         methods:{
             showIndex(index,index1){
                 this.Index = index
                 this.Index1 = index1
                 this.$refs.detail.show()
+                this.$refs.goods.style.overflow = "auto"
+            },
+            shopClean(){
+              for(let i=0;i<this.goods.length;i++){
+                for(let j=0;j<this.goods[i].foods.length;j++){
+                  this.goods[i].foods[j].num--
+                }
+              }
             },
             initscroll(){
                 this.menuScroll = new bs(this.$refs.menuScroll,{
@@ -252,6 +258,9 @@
         position:absolute;
         right:0;
         bottom:1.8rem;
+    }
+    .detail{
+      /* min-height: 100vh; */
     }
     .foods-detail{
         position:absolute;

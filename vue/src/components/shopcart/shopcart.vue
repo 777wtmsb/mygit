@@ -43,7 +43,10 @@
             }
         },
         props:{
-            cartArr:[],
+            cartArr:{
+              type:Array,
+              default:[],
+            },
             seller:{}
         },
         computed:{
@@ -83,7 +86,7 @@
                 this.cartshow = !this.cartshow
             },
             clean(){
-                this.cartArr=[];
+                this.$emit('cleanAll')
                 this.cartshow = false
             }
         },

@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div class="header" v-if="seller.avatar">
         <div class="content">
             <img :src="seller.avatar" class="avatar" />
             <div class="text">
@@ -59,18 +59,17 @@
 <script>
     import star from "@/components/star/star"
     export default {
-        name:"header",
+        name:"top",
         data(){
             return{
-                showDetail:false
+                showDetail:false,
             }
         },
         props:{
             seller:{}
         },
         created:function(){
-            this.classArray = ["decrease","discount","special","invoice","guarantee"]
-
+          this.classArray = ["decrease","discount","special","invoice","guarantee"]
         },
         components:{
             star:star
@@ -80,7 +79,7 @@
 
 </script>
 
-<style type="text/css">
+<style scoped type="text/css">
     .header{
         background:rgba(7,17,27,0.5);
         padding-top:2.4rem;
